@@ -10,19 +10,23 @@ android {
         targetSdkVersion projectTargetSdkVersion
     }
 
-    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
 
     lintOptions { abortOnError false }
 }
 
 dependencies {
+    // Optional compile only dependencies
+    provided supportCoreUi
+    provided ankoCommon
+    provided ankoSdk15
     // Core libs
-    compile supportAppCompat
     compile kotlinStdLib
-    compile ankoCommon
-    compile ankoSdk21
     // DI libs
-    compile dagger
+    compile javaxInject
     // Rx libs
     compile rxJava
     compile rxAndroid
